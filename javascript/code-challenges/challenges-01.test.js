@@ -63,11 +63,17 @@ Use `forEach` to build a new array of strings, each string modified by the callb
 ------------------------------------------------------------------------------------------------ */
 
 const greeting = (word) => {
-  // Solution code here...
+  let upper = word.toUpperCase();
+  return upper + '!';
 };
 
 const speaker = (words, callback) => {
-  // Solution code here...
+  let result = [];
+  words.forEach(word => {
+    let callBackResult = callback(word);
+    result.push(callBackResult);
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -163,7 +169,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should provide an array of strings, that get uppercased, and a "!" at the end', () => {
     expect(speaker(['hello', '301', 'students'], greeting)).toStrictEqual(['HELLO!', '301!', 'STUDENTS!']);
   });
